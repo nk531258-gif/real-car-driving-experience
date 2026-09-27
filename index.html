@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Real Car Driving Experience</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header class="panel">
+        <h1>Real Car Driving Experience</h1>
+        <p>Drive, park, and handle city traffic with realistic-feel controls.</p>
+      </header>
+
+      <section class="panel controls" aria-labelledby="controls-title">
+        <h2 id="controls-title">Driving options</h2>
+        <label>
+          Car type
+          <select id="car-select" aria-label="Select car type"></select>
+        </label>
+
+        <label>
+          Camera mode
+          <select id="camera-select" aria-label="Select camera mode">
+            <option value="follow">Follow</option>
+            <option value="driver">Driver</option>
+            <option value="overhead">Overhead</option>
+          </select>
+        </label>
+
+        <label class="toggle">
+          <input id="parking-mode" type="checkbox" />
+          Parking mode
+        </label>
+
+        <button id="day-night" type="button">Toggle Day/Night</button>
+        <button id="reset-car" type="button">Reset Car</button>
+      </section>
+
+      <section class="panel legend" aria-label="Controls help">
+        <p><strong>Controls:</strong> W/S or ↑/↓ accelerate/brake, A/D or ←/→ steer, Space handbrake.</p>
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel game-wrap" aria-label="Game area">
+        <canvas id="game" width="1024" height="640" aria-label="Driving game canvas"></canvas>
+        <aside class="hud" aria-label="Driving HUD">
+          <p><strong>Speed:</strong> <span id="speed">0</span> km/h</p>
+          <p><strong>Signal:</strong> <span id="signal">EW: Green / NS: Red</span></p>
+          <p><strong>Direction:</strong> <span id="direction">Head to checkpoint</span></p>
+          <p><strong>Mode:</strong> <span id="mode">Day</span></p>
+        </aside>
+      </section>
+    </main>
+
+    <script type="module" src="/app.mjs"></script>
+  </body>
+</html>
