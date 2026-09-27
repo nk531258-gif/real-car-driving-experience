@@ -3,41 +3,54 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>World Clock</title>
+    <title>Real Car Driving Experience</title>
     <link rel="stylesheet" href="/styles.css" />
   </head>
   <body>
     <main class="app">
-      <header class="app__header">
-        <h1>Digital World Clock</h1>
-        <p>Live time across multiple cities</p>
+      <header class="panel">
+        <h1>Real Car Driving Experience</h1>
+        <p>Drive, park, and handle city traffic with realistic-feel controls.</p>
       </header>
 
-      <section class="panel" aria-labelledby="controls-heading">
-        <h2 id="controls-heading">Clock controls</h2>
-        <div class="controls-grid">
-          <label for="timezone-select">Add time zone</label>
-          <select id="timezone-select" aria-label="Select a time zone to add"></select>
-          <button id="add-clock" type="button">Add clock</button>
+      <section class="panel controls" aria-labelledby="controls-title">
+        <h2 id="controls-title">Driving options</h2>
+        <label>
+          Car type
+          <select id="car-select" aria-label="Select car type"></select>
+        </label>
 
-          <fieldset class="settings" aria-label="Display settings">
-            <legend>Display settings</legend>
-            <label>
-              <input id="setting-24h" type="checkbox" />
-              Use 24-hour format
-            </label>
-            <label>
-              <input id="setting-seconds" type="checkbox" checked />
-              Show seconds
-            </label>
-          </fieldset>
-        </div>
-        <p id="status" class="status" role="status" aria-live="polite"></p>
+        <label>
+          Camera mode
+          <select id="camera-select" aria-label="Select camera mode">
+            <option value="follow">Follow</option>
+            <option value="driver">Driver</option>
+            <option value="overhead">Overhead</option>
+          </select>
+        </label>
+
+        <label class="toggle">
+          <input id="parking-mode" type="checkbox" />
+          Parking mode
+        </label>
+
+        <button id="day-night" type="button">Toggle Day/Night</button>
+        <button id="reset-car" type="button">Reset Car</button>
       </section>
 
-      <section>
-        <h2 class="visually-hidden">Clock list</h2>
-        <ul id="clock-list" class="clock-grid" aria-label="World clocks"></ul>
+      <section class="panel legend" aria-label="Controls help">
+        <p><strong>Controls:</strong> W/S or ↑/↓ accelerate/brake, A/D or ←/→ steer, Space handbrake.</p>
+        <p id="status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="panel game-wrap" aria-label="Game area">
+        <canvas id="game" width="1024" height="640" aria-label="Driving game canvas"></canvas>
+        <aside class="hud" aria-label="Driving HUD">
+          <p><strong>Speed:</strong> <span id="speed">0</span> km/h</p>
+          <p><strong>Signal:</strong> <span id="signal">EW: Green / NS: Red</span></p>
+          <p><strong>Direction:</strong> <span id="direction">Head to checkpoint</span></p>
+          <p><strong>Mode:</strong> <span id="mode">Day</span></p>
+        </aside>
       </section>
     </main>
 
